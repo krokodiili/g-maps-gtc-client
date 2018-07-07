@@ -10,6 +10,7 @@ class EnterName extends Component {
 		this.state = {
 			showDialog: true,
 			name: '',
+			error: false,
 		}
 		this.handleChange = this.handleChange.bind(this)
 	}
@@ -17,16 +18,21 @@ class EnterName extends Component {
 	handleClose = () => {
 		const { name } = this.state
 		const { sendPlayerDetails } = this.props
-		this.setState({ showDialog: false })
-		sendPlayerDetails(name)
+		if (name) {
+			this.setState({ showDialog: false })
+			sendPlayerDetails(name)
+		} else {
+			this.setState({ error: true })
+		}
 	}
 
 	handleChange(e) {
 		this.setState({ name: e.target.value })
+		this.setState({ error: false })
 	}
 
 	render() {
-		const { showDialog, name } = this.state
+		const { showDialog, name, error } = this.state
 
 		return (
 			<div>
@@ -36,6 +42,7 @@ class EnterName extends Component {
 						onChange={this.handleChange}
 						open={showDialog}
 						value={name}
+						error={error}
 					/>
 				)}
 			</div>

@@ -11,7 +11,7 @@ class EnterNameDialog extends Component {
 
 	render() {
 		const {
-			onClose, onChange, value, ...other
+			onClose, onChange, value, error, ...other
 		} = this.props
 
 		return (
@@ -34,6 +34,7 @@ class EnterNameDialog extends Component {
 							value={value}
 							onChange={onChange}
 							placeholder="Kirjoita nimi"
+							error={error}
 						/>
 						<Button
 							type="submit"
@@ -53,6 +54,7 @@ EnterNameDialog.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
 	value: PropTypes.string.isRequired,
+	error: PropTypes.bool,
 }
 
 export default EnterNameDialog
