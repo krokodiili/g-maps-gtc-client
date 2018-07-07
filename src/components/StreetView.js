@@ -20,14 +20,12 @@ const StreetView = compose(
 		loadingElement: <div style={{ height: '100%' }} />,
 		containerElement: <div style={{ height: '90vh' }} />,
 		mapElement: <div style={{ height: '100%' }} />,
-		center: { lat: props.lat, lng: props.lng },
 	})),
 	withScriptjs,
 	withGoogleMap,
 )(props => (
 	<StreetViewPanorama
-		defaultPosition={props.center}
-		setPosition={props.center}
+		position={{ lat: props.lat, lng: props.lng }}
 		visible
 		disableDefaultUi
 		options={{
