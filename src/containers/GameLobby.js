@@ -1,31 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { CircularProgress } from '@material-ui/core'
 import Lobby from '../components/GameLobby'
 
-export class GameLobby extends Component {
-	render() {
-		return (
-			<Lobby
-				playerList={[
-					{
-						id: 0,
-						name: 'Lauri',
-						score: 0,
-					},
-					{
-						id: 1,
-						name: 'Harri',
-						score: 0,
-					},
-				]}
-				waitingRoomList={[
-					{
-						id: 2,
-						name: 'Jorma',
-					},
-				]}
-			/>
-		)
+export const GameLobby = ({ players }) => {
+	if (players.length < 1) {
+		return <CircularProgress />
 	}
+
+	return <Lobby players={players} />
 }
 
 export default GameLobby

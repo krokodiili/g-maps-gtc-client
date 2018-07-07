@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'redux-zero/react'
 import EnterNameDialog from '../components/EnterNameDialog'
-import actions from '../actions'
 
 class EnterName extends Component {
 	constructor(props) {
@@ -50,7 +48,4 @@ class EnterName extends Component {
 	}
 }
 
-export default connect(
-	null,
-	actions,
-)(EnterName)
+export default EnterName

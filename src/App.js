@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import './App.css'
 import { Provider } from 'redux-zero/react'
+import socket from 'socket.io-client'
 import store from './store'
 import EnterName from './containers/EnterName'
 import GameLobby from './containers/GameLobby'
 import HowToPlay from './components/HowToPlay'
 import GuessInput from './containers/GuessInput'
 import StreetView from './containers/StreetView'
+
+const io = socket('http://192.168.1.48:18399')
 
 const styles = {
 	root: {
@@ -30,7 +33,30 @@ const styles = {
 }
 
 class App extends Component {
+	constructor() {
+		super()
+
+		this.state = {
+			players: [],
+		}
+	}
+
+	componentDidMount() {
+		io.on('updateUsers', players => {
+			this.setState({ players })
+		})
+	}
+
+	sendPlayerDetails = name => {
+		console.log(name)
+		io.emit('initial', {
+			name,
+		})
+	}
+
 	render() {
+		const { players } = this.state
+
 		return (
 			<Provider store={store}>
 				<div className="App" style={styles.root}>
@@ -42,8 +68,8 @@ class App extends Component {
 					</div>
 
 					<div style={styles.sideBar}>
-						<EnterName />
-						<GameLobby />
+						<EnterName sendPlayerDetails={this.sendPlayerDetails} />
+						<GameLobby players={players} />
 						<HowToPlay />
 					</div>
 				</div>
