@@ -6,6 +6,7 @@ import EnterName from './containers/EnterName'
 import GameLobby from './containers/GameLobby'
 import HowToPlay from './components/HowToPlay'
 import GuessInput from './containers/GuessInput'
+import StreetView from './containers/StreetView'
 
 const styles = {
 	root: {
@@ -34,7 +35,7 @@ class App extends Component {
 			<Provider store={store}>
 				<div className="App" style={styles.root}>
 					<div>
-						<div style={styles.maps} />
+						<StreetView />
 						<div style={styles.bottomBar}>
 							<GuessInput />
 						</div>

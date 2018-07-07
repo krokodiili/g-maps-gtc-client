@@ -41,7 +41,7 @@ class EnterNameDialog extends Component {
 							variant="contained"
 							style={{ marginTop: 20 }}
 						>
-							Aloita pelaaminen!
+							Hyppää mukaan!
 						</Button>
 					</form>
 				</div>
