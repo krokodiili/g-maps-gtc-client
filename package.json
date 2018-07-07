@@ -1,38 +1,39 @@
 {
-  "name": "stranded",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^1.2.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-google-maps": "^9.4.5",
-    "react-scripts": "1.1.4",
-    "recompose": "^0.27.1",
-    "redux-zero": "^4.12.0",
-    "styled-components": "^3.3.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "babel-eslint": "^8.2.5",
-    "eslint": "^5.0.1",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-prettier": "^2.6.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.10.0",
-    "prettier": "^1.13.7"
-  },
-  "proxy": "http://localhost:18399"
+	"name": "stranded",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@material-ui/core": "^1.2.0",
+		"prop-types": "^15.6.2",
+		"react": "^16.4.1",
+		"react-dom": "^16.4.1",
+		"react-google-maps": "^9.4.5",
+		"react-scripts": "1.1.4",
+		"recompose": "^0.27.1",
+		"redux-zero": "^4.12.0",
+		"socket.io-client": "^2.1.1",
+		"styled-components": "^3.3.3"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"dev": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"devDependencies": {
+		"babel-eslint": "^8.2.5",
+		"eslint": "^5.0.1",
+		"eslint-config-airbnb": "^17.0.0",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-plugin-babel": "^5.1.0",
+		"eslint-plugin-import": "^2.13.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-node": "^6.0.1",
+		"eslint-plugin-prettier": "^2.6.1",
+		"eslint-plugin-promise": "^3.8.0",
+		"eslint-plugin-react": "^7.10.0",
+		"prettier": "^1.13.7"
+	},
+	"proxy": "http://192.168.1.48:18399"
 }
