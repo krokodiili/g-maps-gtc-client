@@ -1,7 +1,3 @@
-import axios from 'axios'
-
-const baseUrl = 'asd'
-
 export default store => ({
 	sendPlayerDetails: async (state, name) => {
 		console.log('NAME', name)
