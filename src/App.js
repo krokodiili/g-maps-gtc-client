@@ -37,13 +37,19 @@ class App extends Component {
 		super()
 
 		this.state = {
-			players: [],
+			players: null,
+			locations: null,
 		}
 	}
 
 	componentDidMount() {
 		io.on('updateUsers', players => {
 			this.setState({ players })
+		})
+
+		io.on('start', locationArray => {
+			console.log('GAME STARTINGS')
+			this.setState({ locations: locationArray })
 		})
 	}
 
@@ -54,9 +60,12 @@ class App extends Component {
 		})
 	}
 
-	render() {
-		const { players } = this.state
+	startGame = () => {
+		io.emit('start')
+	}
 
+	render() {
+		const { players, locations } = this.state
 		return (
 			<Provider store={store}>
 				<div className="App" style={styles.root}>
@@ -69,7 +78,11 @@ class App extends Component {
 
 					<div style={styles.sideBar}>
 						<EnterName sendPlayerDetails={this.sendPlayerDetails} />
-						<GameLobby players={players} />
+						<GameLobby
+							players={players}
+							locations={locations}
+							startGame={this.startGame}
+						/>
 						<HowToPlay />
 					</div>
 				</div>
