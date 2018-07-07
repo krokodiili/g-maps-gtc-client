@@ -4,25 +4,38 @@ import EnterNameDialog from '../components/EnterNameDialog'
 import actions from '../actions'
 
 class EnterName extends Component {
-	state = {
-		showDialog: true,
+	constructor(props) {
+		super()
+
+		this.state = {
+			showDialog: true,
+			name: '',
+		}
+		this.handleChange = this.handleChange.bind(this)
 	}
 
-	handleClose = value => {
+	handleClose = () => {
+		const { name } = this.state
 		const { sendPlayerDetails } = this.props
 		this.setState({ showDialog: false })
-		sendPlayerDetails(value)
+		sendPlayerDetails(name)
+	}
+
+	handleChange(e) {
+		this.setState({ name: e.target.value })
 	}
 
 	render() {
-		const { showDialog } = this.state
+		const { showDialog, name } = this.state
 
 		return (
 			<div>
 				{showDialog && (
 					<EnterNameDialog
 						onClose={this.handleClose}
+						onChange={this.handleChange}
 						open={showDialog}
+						value={name}
 					/>
 				)}
 			</div>

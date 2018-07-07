@@ -3,31 +3,16 @@ import PropTypes from 'prop-types'
 import { Dialog, TextField, Button } from '@material-ui/core'
 
 class EnterNameDialog extends Component {
-	constructor() {
-		super()
-
-		this.state = {
-			name: '',
-		}
-
-		this.handleChange = this.handleChange.bind(this)
-	}
-
 	handleSubmit = event => {
 		event.preventDefault()
-
 		const { onClose } = this.props
-		const { name } = this.state
-		onClose(name)
-	}
-
-	handleChange(e) {
-		this.setState({ name: e.target.value })
+		onClose()
 	}
 
 	render() {
-		const { onClose, ...other } = this.props
-		const { name } = this.state
+		const {
+			onClose, onChange, value, ...other
+		} = this.props
 
 		return (
 			<Dialog
@@ -46,8 +31,8 @@ class EnterNameDialog extends Component {
 						}}
 					>
 						<TextField
-							value={name}
-							onChange={this.handleChange}
+							value={value}
+							onChange={onChange}
 							placeholder="Kirjoita nimi"
 						/>
 						<Button
@@ -66,6 +51,8 @@ class EnterNameDialog extends Component {
 
 EnterNameDialog.propTypes = {
 	onClose: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired,
 }
 
 export default EnterNameDialog
