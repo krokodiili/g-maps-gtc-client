@@ -2,17 +2,20 @@ import React from 'react'
 import { Card, Button } from '@material-ui/core'
 import PlayerList from './PlayerList'
 
-export default ({ players, gameRunning }) => (
+export default ({ players, locations, startGame }) => (
 	<Card style={{ padding: 20 }}>
 		<p style={{ fontWeight: 'bold' }}> Pelaajat </p>
 		<PlayerList list={players} />
-		{!gameRunning && (
-			<Button style={{ marginTop: 20 }} variant="contained">
+		{!locations && (
+			<Button
+				style={{ marginTop: 20 }}
+				variant="contained"
+				onClick={startGame}
+			>
 				Aloita peli
 			</Button>
 		)}
 
 		<hr />
-		<p style={{ fontWeight: 'bold' }}> Odottaa peliä </p>
 	</Card>
 )
