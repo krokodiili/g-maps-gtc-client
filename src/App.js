@@ -7,7 +7,7 @@ import EnterName from './containers/EnterName'
 import GameLobby from './containers/GameLobby'
 import HowToPlay from './components/HowToPlay'
 import GuessInput from './containers/GuessInput'
-import StreetView from './containers/StreetView'
+import StreetView from './components/StreetView'
 
 const io = socket('http://192.168.1.48:18399')
 
@@ -39,7 +39,10 @@ class App extends Component {
 		this.state = {
 			players: null,
 			locations: null,
+			currentLocation: 0,
 		}
+
+		this.makeAGuess = this.makeAGuess.bind(this)
 	}
 
 	componentDidMount() {
@@ -50,6 +53,7 @@ class App extends Component {
 		io.on('start', locationArray => {
 			console.log('GAME STARTINGS')
 			this.setState({ locations: locationArray })
+			console.log(locationArray)
 		})
 	}
 
@@ -60,19 +64,44 @@ class App extends Component {
 		})
 	}
 
+	makeAGuess = guess => {
+		const { locations, currentLocation } = this.state
+		if (
+			locations
+			&& guess.toLowerCase() === locations[currentLocation].city
+		) {
+			console.log('JEBOI')
+			this.setState({ currentLocation: currentLocation + 1 })
+		}
+	}
+
 	startGame = () => {
 		io.emit('start')
 	}
 
 	render() {
-		const { players, locations } = this.state
+		const { players, locations, currentLocation } = this.state
+
 		return (
 			<Provider store={store}>
 				<div className="App" style={styles.root}>
 					<div>
-						<StreetView />
+						<div style={styles.maps}>
+							{locations ? (
+								<StreetView
+									lat={
+										locations[currentLocation].location.lat
+									}
+									lng={
+										locations[currentLocation].location.lng
+									}
+								/>
+							) : (
+								<div style={styles.loading} />
+							)}
+						</div>
 						<div style={styles.bottomBar}>
-							<GuessInput />
+							<GuessInput onSubmit={this.makeAGuess} />
 						</div>
 					</div>
 

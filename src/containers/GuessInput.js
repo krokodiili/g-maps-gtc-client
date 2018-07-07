@@ -18,8 +18,10 @@ class GuessInput extends Component {
 	}
 
 	handleSubmit(e) {
+		const { onSubmit } = this.props
+		const { guess } = this.state
 		e.preventDefault()
-		console.log(this.state.guess)
+		onSubmit(guess)
 		this.setState({ guess: '' })
 	}
 
