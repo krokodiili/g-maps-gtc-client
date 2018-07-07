@@ -33,7 +33,7 @@ class EnterNameDialog extends Component {
 						<TextField
 							value={value}
 							onChange={onChange}
-							placeholder="Kirjoita nimi"
+							placeholder="Kirjoita nimesi ja osallistu peliin"
 							error={error}
 						/>
 						<Button
@@ -41,7 +41,7 @@ class EnterNameDialog extends Component {
 							variant="contained"
 							style={{ marginTop: 20 }}
 						>
-							Hyppää mukaan!
+							 Valmis
 						</Button>
 					</form>
 				</div>
