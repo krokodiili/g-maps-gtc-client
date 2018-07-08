@@ -83,6 +83,7 @@ class App extends Component {
 			this.setState({ currentLocation: currentLocation + 1 })
 			io.emit('correct', currentLocation)
 			if (currentLocation === locations.length - 1) {
+        io.emit('finish')
 				this.setState({ winner: 'Sinä' })
 			}
 		}
