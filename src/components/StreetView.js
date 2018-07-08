@@ -1,5 +1,5 @@
 import React from 'react'
-import { compose, withProps } from 'recompose'
+import { compose, withPropsOnChange } from 'recompose'
 
 import {
 	withScriptjs,
@@ -14,7 +14,7 @@ const getPixelPositionOffset = (width, height) => ({
 })
 
 const StreetView = compose(
-	withProps(props => ({
+	withPropsOnChange(['lat', 'lng'], props => ({
 		googleMapURL:
 			'https://maps.googleapis.com/maps/api/js?key=AIzaSyAqcPrwNOpMl4IZL64QjfnBdPoE5dcZ28w&v=3.exp&libraries=geometry,drawing,places',
 		loadingElement: <div style={{ height: '100%' }} />,
