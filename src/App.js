@@ -8,6 +8,7 @@ import GameLobby from './containers/GameLobby'
 import HowToPlay from './components/HowToPlay'
 import GuessInput from './containers/GuessInput'
 import StreetView from './components/StreetView'
+import EndScreen from './components/EndScreen'
 
 const io = socket('http://192.168.1.48:18399')
 
@@ -40,6 +41,7 @@ class App extends Component {
 			players: null,
 			locations: null,
 			currentLocation: 0,
+			winner: null,
 		}
 
 		this.makeAGuess = this.makeAGuess.bind(this)
@@ -50,10 +52,18 @@ class App extends Component {
 			this.setState({ players })
 		})
 
+		io.on('userScored', players => {
+			this.setState({ players })
+		})
+
 		io.on('start', locationArray => {
 			console.log('GAME STARTINGS')
 			this.setState({ locations: locationArray })
 			console.log(locationArray)
+		})
+
+		io.on('gameFinished', user => {
+			this.setState({ winner: user.name })
 		})
 	}
 
@@ -72,6 +82,9 @@ class App extends Component {
 		) {
 			this.setState({ currentLocation: currentLocation + 1 })
 			io.emit('correct', currentLocation)
+			if (currentLocation === locations.length - 1) {
+				this.setState({ winner: 'Sinä' })
+			}
 		}
 	}
 
@@ -80,26 +93,34 @@ class App extends Component {
 	}
 
 	render() {
-		const { players, locations, currentLocation } = this.state
+		const {
+			players, locations, currentLocation, winner,
+		} = this.state
 
 		return (
 			<Provider store={store}>
 				<div className="App" style={styles.root}>
 					<div>
-						<div style={styles.maps}>
-							{locations ? (
-								<StreetView
-									lat={
-										locations[currentLocation].location.lat
-									}
-									lng={
-										locations[currentLocation].location.lng
-									}
-								/>
-							) : (
-								<div style={styles.loading} />
-							)}
-						</div>
+						{winner ? (
+							<EndScreen winner={winner} locations={locations} />
+						) : (
+							<div style={styles.maps}>
+								{locations ? (
+									<StreetView
+										lat={
+											locations[currentLocation].location
+												.lat
+										}
+										lng={
+											locations[currentLocation].location
+												.lng
+										}
+									/>
+								) : (
+									<div style={styles.loading} />
+								)}
+							</div>
+						)}
 						<div style={styles.bottomBar}>
 							<GuessInput onSubmit={this.makeAGuess} />
 						</div>
