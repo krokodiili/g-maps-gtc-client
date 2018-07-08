@@ -16,7 +16,7 @@ const getPixelPositionOffset = (width, height) => ({
 const StreetView = compose(
 	withProps(props => ({
 		googleMapURL:
-			'https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places',
+			'https://maps.googleapis.com/maps/api/js?key=AIzaSyAqcPrwNOpMl4IZL64QjfnBdPoE5dcZ28w&v=3.exp&libraries=geometry,drawing,places',
 		loadingElement: <div style={{ height: '100%' }} />,
 		containerElement: <div style={{ height: '90vh' }} />,
 		mapElement: <div style={{ height: '100%' }} />,
