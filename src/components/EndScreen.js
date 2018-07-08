@@ -8,6 +8,6 @@ export default ({ winner, locations }) => (
 			{winner} muisti tarinan, peli on päättynyt!{' '}
 		</Typography>
 		<Typography variant="headline"> Oikeat paikat: </Typography>
-		{locations.map(location => <p> {} </p>)}
+		{locations.map(location => <p> {location.city} </p>)}
 	</div>
 )
