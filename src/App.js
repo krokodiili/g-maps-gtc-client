@@ -55,6 +55,7 @@ class App extends Component {
 			this.setState({ locations: locationArray })
 			console.log(locationArray)
 		})
+		io.on('userScored', data => console.log('asdasd', data))
 	}
 
 	sendPlayerDetails = name => {

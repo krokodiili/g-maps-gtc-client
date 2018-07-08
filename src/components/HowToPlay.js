@@ -7,7 +7,7 @@ export default () => (
 		<p style={{ marginTop: 10 }}>
 		Lähdit viime iltana bailaamaan kavereiden kanssa ja
 		muistikuvat ovat kaikilta kokonaan kadonneet aamuun mennessä, joten
-		teidän tehätävä on porukalla muistella ja päätellä kaikki paikat,
+		teidän tehtävä on porukalla muistella ja päätellä kaikki paikat,
 		jossa eilen kävitte kylillä.
 			<br />
 			<br />
