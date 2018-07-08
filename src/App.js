@@ -70,8 +70,8 @@ class App extends Component {
 			locations
 			&& guess.toLowerCase() === locations[currentLocation].city
 		) {
-			console.log('JEBOI')
 			this.setState({ currentLocation: currentLocation + 1 })
+			io.emit('correct', currentLocation)
 		}
 	}
 

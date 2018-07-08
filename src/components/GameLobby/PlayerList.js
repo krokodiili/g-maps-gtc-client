@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 
-export default ({ list }) => {
+export default ({ list, locationAmount }) => {
 	console.log(list)
 	return (
 		<div>
@@ -9,7 +9,7 @@ export default ({ list }) => {
 				<div style={{ display: 'flex', marginTop: 5 }} key={player.id}>
 					<Typography variant="title"> {player.name} </Typography>
 					<Typography variant="subheading" style={{ marginLeft: 20 }}>
-						{player.score}
+						{player.score} / {locationAmount}
 					</Typography>
 				</div>
 			))}
